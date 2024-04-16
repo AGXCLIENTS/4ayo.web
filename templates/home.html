@@ -1,0 +1,176 @@
+<html>
+
+    <!-- Title -->
+    <title>{{ appName() }} - Home </title>
+
+<head>
+
+    <div id="cursor-custom"></div>
+
+    <!-- SKRYPT DEFINIUJACY KURSOR -->
+    <script>
+        const cursor = document.getElementById("cursor-custom");
+        const radius = cursor.offsetHeight / 2;
+
+        document.addEventListener("mousemove", (e) => {
+            let top = e.clientY - radius;
+            let left = e.clientX - radius;
+
+            cursor.style.top = `${top}px`;
+            cursor.style.left = `${left}px`;
+        });
+    </script>
+    
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/static/css/pages/home-style.css">
+    <link rel="stylesheet" href="/static/css/pages/home-res.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <meta name="description" content="Hosted as a part of my homelab :3" />
+	<meta name="author" content="4ayo(.ovh)">
+	<meta name="keywords" content="Osu! osu! OSU! Osu osu OSU Bancho bancho Bancho.py bancho.py guweb Guweb kawata Kawata private server" />
+	<meta property="og:locale" content="pl_PL" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="4ayo(.ovh)" />
+	<meta property="og:description" content="A private Osu! Server. Hosted as a part of my homelab :3" />
+	<meta property="og:site_name" content="4ayo(.ovh)" />
+	<meta property="section:publisher" content="4ayo(.ovh) Inc." />
+    <meta property="og:image" content="https://osu-server-list.com/res/logo.png">   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#d55b9e">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#000000">
+    
+</head>
+<body>
+    <div class="media">
+        <a  target="_blank" href="https://ko-fi.com/4ayshiee"><img src="https://cdn-icons-png.freepik.com/512/466/466223.png" alt=""></a>
+        <a  target="_blank" href="/discord"><img src="https://cdn.icon-icons.com/icons2/2428/PNG/512/discord_black_logo_icon_147145.png" alt=""></a>
+        <a  target="_blank" href="https://osu-server-list.com/server/4ayo"><img src="https://cdn2.iconfinder.com/data/icons/vote-reward-badges1/24/Vote-Stamp-512.png" alt=""></a>
+    </div>
+    <div class="bg">
+        <video autoplay muted loop class="vidbg">
+            <source src="/static/images/videobg.mp4" type="video/mp4">
+            CAN'T DISPLAY VIDEO!!!
+        </video>
+	</div>
+
+    <div class="header">
+        <div class="logo">
+            <h1>4ayo(.ovh)</h1>
+            <div class="online">
+            <div class="dot"></div>
+        <!--    <div class="text">
+                <h2>Server time: </h2>
+                <h3>(CET)<span id="poland-time"></span>
+                </div>  -->
+            </div>
+        </div> 
+    
+    
+        <div class="nav">
+            <a href="/home"><h2>Home</h2></a>
+            <a href="https://mayaslab.eu"><h2>About Me</h2></a>
+            <a href="/leaderboard"><h2>Leaderboard</h2></a>
+            <a href="https://catboy.best"><h2>Beatmaps</h2></a>
+            {% if not session.authenticated %}
+            <a href="/register">
+                <button onclick="locaiton.href=''">Sign up</button>
+            <a href="/login">
+                <button onclick="locaiton.href=''">Log in</button>
+            {% else %}
+            <a href="/u/{{ session.user_data['id'] }}">
+                <button onclick="locaiton.href=''">{{ session.user_data['name'] }}</button>
+            <a href="/logout"><h2>Log out</h2></a>
+            {% endif %}
+            </a>
+        </div>
+    </div>
+
+
+    <div class="main">
+        <div class="left">
+            <h1>4ayo(.ovh)</h1>
+            <h2>Hosted as a part of my homelab :3</h2>
+        </div>
+    </div>
+    
+    <div id="tryby" class="section">
+        <div class="title">
+            <h1>ABOUT US [ :P ]</h1>
+            <div class="line"></div>
+        </div>
+        <div class="content">
+            <div class="tryb">
+                <div class="title">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/2048px-Osu%21_Logo_2016.svg.png" alt="">
+                    <h1>What we offer?
+                </div>
+                <h2>(Cheating allowed)
+                <br>
+                <br>You can use cheats (e.g. freedom) on our server. We only ban for spamming or insulting others.
+                <br>
+                <br>(Free osu!direct) 
+                <br>
+                <br>Free direct using catboy.api and catboy.best. Thats it.
+                <br>
+                <br>(Ranked mapps) 
+                <br>
+                <br>Do you want your map to be ranked? Write to one of our administrators!
+                <br>
+                <br>
+                <br>
+                </h2>
+            </div> 
+
+        </div>
+    </div>
+    
+    <div class="creator">
+        <h2><b>ⓒ</b> 2024 <b>4ayo(.ovh) </b> — 4ayo(.ovh) v1.3.0 </h2>
+<!--    <h2>KO-FI: <a href="https://ko-fi.com/4ayshiee"><b>click!</b></a></h2>  -->
+        <h2>Server time: (CET) <span id="poland-time"></span> </h2>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+    $("a").on('click', function(event) {
+        if (this.hash !== "") {
+        event.preventDefault();
+        var hash = this.hash;
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 800, function(){
+            window.location.hash = hash;
+        });
+        }
+    });
+    });
+    </script>
+    <script>
+        function displayPolandTime() {
+            var now = new Date();
+            now.toLocaleString('en-US', {timeZone: 'Europe/Warsaw'});
+            var hours = now.getHours().toString().padStart(2, '0');
+            var minutes = now.getMinutes().toString().padStart(2, '0');
+            var timeString = hours + ':' + minutes;
+            document.getElementById('poland-time').innerText = timeString;
+            setTimeout(displayPolandTime, 60000); // Update every minute
+        }
+        window.onload = displayPolandTime;
+    </script>
+    </div>
+</body>
+</html>

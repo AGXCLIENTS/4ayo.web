@@ -1,0 +1,394 @@
+/* font import */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* general */
+
+:root {
+    cursor: none;
+}
+
+body {
+    margin:0;
+    background-color: rgb(10, 10, 10);
+    color: white;   
+    font-family: poppins;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(10, 10, 10);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(245, 82, 255); /* Change green to pink here */
+    border-radius: 10px;
+}
+
+
+/* header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+.header .logo {
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+}
+.header .logo h1{
+    font-weight: 600;
+    font-size: 20px;
+}
+.header .logo .online {
+    display: flex;
+    margin-left: 25px;
+    align-items: center;
+    
+}
+.header .logo .online {
+    width: 7px;
+    height: 7px;
+    background-color: rgb(245, 82, 255); /* Change green to pink here */
+    border-radius: 20px;
+    margin-right: 15px;
+    animation: dot 2s infinite;
+}
+.dot {
+    width: 7px;
+    height: 7px;
+    background-color: rgb(245, 82, 255); /* Change green to pink here */
+    border-radius: 20px;
+    animation: dot 2s infinite;
+}
+
+@keyframes dot {
+    0% {
+        box-shadow: 0px 0px 0px 0px rgb(245, 82, 255); /* Change green to pink here */
+    }
+
+    50% {
+        box-shadow: 0px 0px 1px 3px rgb(255, 167, 218); /* Adjust shadow color if needed */
+    }
+
+    100% {
+        box-shadow: 0px 0px 0px 0px rgb(245, 82, 255); /* Change green to pink here */
+    }
+}
+.online .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.online .text h2 {
+    margin:0;
+    line-height: 15px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.online .text h3{
+    margin:0;
+    text-align: center;
+    font-weight: 300;
+    line-height: 20px;
+    color: rgb(245, 82, 255); /* Change green to pink here */
+    font-size: 15px;
+}
+
+
+.header .nav {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+.header .nav h2 {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-weight: 300;
+    font-size: 16px;
+    transition: 200ms;
+
+    color: rgb(199, 199, 199);
+}
+.header .nav h2:hover{
+    color: rgb(245, 82, 255); /* Change green to pink here */
+    cursor: pointer;
+    transition: 200ms;
+
+    filter: brightness(90%);
+}
+.header .nav .active {
+    color: white;
+    transition: 200ms;
+    font-weight: 400;
+}
+
+.header .nav .active:hover {
+    color: white;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.header .nav button {
+    display: flex;
+    align-items: center;
+    padding: 0px 35px;
+    height: 30px;
+    border:0;
+    border-radius: 20px;
+    background-color: rgba(255, 82, 255, 0.815); /* Change green to pink here */
+    color: white;
+    font-family: poppins;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 20px;
+    transition: 200ms;
+}
+
+.header .nav button:hover{
+    transition: 200ms;
+    filter: brightness(80%);
+    cursor: pointer;
+    transition: 200ms;
+}
+
+/* main */
+
+.main {
+    display: flex;
+    min-height: 85vh;
+    justify-content: center;
+    flex-direction: column;
+    width: 1150px;
+}
+
+.main .left h1 {
+    font-weight: 700;
+    font-size: 80px;
+    letter-spacing: 5px;
+    margin:0;
+    text-align: center;
+}
+
+.main .left h2 {
+    margin:0;
+    color:rgba(255, 82, 255, 0.815); /* Change green to pink here */
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+/* section */
+
+.section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+}
+
+.section .title {
+    display: flex;
+    margin-left: 100px;
+    align-items: center;
+}
+
+.section .title h1 {
+    font-weight: 500;
+    text-transform: uppercase;
+    
+}
+.section .title .line {
+    height: 10px;
+    width: 200px;
+    background-color: rgb(245, 82, 255);
+    border-radius: 10px;
+}
+
+.section .content {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+.section .content .tryb{
+    background: linear-gradient(rgba(245, 82, 255, 0.278), rgba(10, 10, 10, 0.746)); /* Change green to pink here */
+    width: 88%;
+    height: 350px;
+    border-radius: 10px;
+    margin-left: 12.5px;
+    margin-right: 12.5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.section .content .tryb h1 {
+    font-weight: 500;
+    letter-spacing: 5px;
+    margin:0;
+}
+
+.section .content .tryb h2 {
+    color: rgb(182, 182, 182);
+    font-weight: 300;
+    font-size: 16px;
+    text-align: center;
+}
+
+.section .content .title {
+    display: flex;
+    align-content: center;
+    margin-left: -30px;;
+}
+
+.section .content .title img {
+    width: 40px;
+    margin-right: 25px;;
+}
+
+.section .adm {
+    background: linear-gradient(rgba(245, 82, 255, 0.278), rgba(10, 10, 10, 0.746)); /* Change green to pink here */
+    width: 43%;
+    height: 250px;
+    border-radius: 10px;
+    margin-left: 12.5px;
+    margin-right: 12.5px;
+    margin-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.section .adm img {
+    width: 120px;
+}
+
+.section .adm .left {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.section .adm .right {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.section .adm .right h1 {
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin:0;
+}
+
+.section .adm .right h2 {
+    margin:0;
+    font-weight: 400;
+    color: rgb(245, 82, 255); /* Change green to pink here */
+    letter-spacing: 5px;
+    font-size: 18px;
+}
+
+/* footer */
+
+.footer{
+    margin-top: 150px;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.446);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    
+}
+.footer img {
+    width: 200px;
+    height:200px;
+}
+
+.creator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.505);
+    height: 100px;
+    margin-top: 40px;
+}
+
+.creator h2 {
+    margin:0;
+    font-weight: 300;
+    color: rgb(213, 213, 213);
+    font-size: 20px;
+    line-height: 20px;;
+    
+}
+
+b{
+    color: white;
+}
+
+.media {
+    display: flex;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.media img{
+    width: 50px;
+    margin-left: 5px;
+
+}
+
+.media img:hover{
+    transition: 200ms;
+    filter: brightness(50%);
+    cursor: pointer;
+}
+.bg {
+    position: absolute;
+    z-index: -1;
+    background-size: cover;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.vidbg {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+#cursor-custom {
+	height: 30px;
+	width: 30px;
+	pointer-events: none;
+	position: fixed;
+	background: #ffffff;
+	border-radius: 50%;
+	box-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 5px #fff, 0 0 5px #fff,
+		0 0 7px #fff, 0 0 8px #fff, 0 0 10px #fff, 0 0 15px #fff;
+
+}

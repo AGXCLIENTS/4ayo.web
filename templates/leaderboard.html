@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block title %} Leaderboard {% endblock %}
+<script src="https://kit.fontawesome.com/e157a0cc6b.js" crossorigin="anonymous"></script>
+
+{% block header %}
+<script src="/static/js/asserts/vue.js"></script>
+<script src="/static/js/asserts/vue-axios.js"></script>
+
+<script>
+    var mode = "{{ mode }}";
+    var mods = "{{ mods }}";
+    var sort = "{{ sort }}";
+    var domain = "{{ domain() }}";
+</script>
+
+<link rel="stylesheet" href="/static/css/pages/leaderboard.css">
+{% endblock %}
+
+{% block content %}
+<div id="app" :class="(load ? 'load' : '')">
+    <div class="leaderboard-banner main-banner">
+        <div class="main-selector">
+            <a class="mode-select" v-bind:class="{ 'active': mode === 'std' }"
+            @click="LoadLeaderboard(sort, 'std', mods)">
+                <i class="mode-icon mode-osu"></i><span class="modetext"> osu!</span>
+            </a>
+            <a class="mode-select" v-bind:class="{ 'active': mode === 'taiko', 'disabled': mods === 'ap' }"
+            @click="LoadLeaderboard(sort, 'taiko', mods)">
+                <i class="mode-icon mode-taiko"></i><span class="modetext"> osu!taiko</span>
+            </a>
+            <a class="mode-select" v-bind:class="{ 'active': mode === 'catch', 'disabled': mods === 'ap' }"
+            @click="LoadLeaderboard(sort, 'catch', mods)">
+                <i class="mode-icon mode-catch"></i><span class="modetext"> osu!catch</span>
+            </a>
+            <a class="mode-select" v-bind:class="{ 'active': mode === 'mania', 'disabled': mods === 'ap' || mods === 'rx' }"
+            @click="LoadLeaderboard(sort, 'mania', mods)">
+                <i class="mode-icon mode-mania"></i><span class="modetext"> osu!mania</span>
+            </a>
+        </div>
+        <div class="banner-text">TOP SERVER 50:</div>
+        <div class="selector">
+            <div class="left">
+                <a class="simple-banner-switch" v-bind:class="{ 'active': sort === 'pp' }"
+                @click="LoadLeaderboard('pp', mode, mods, '')">(Sort by):  PP</a>
+                <a class="simple-banner-switch" v-bind:class="{ 'active': sort === 'rscore' }"
+                @click="LoadLeaderboard('rscore', mode, mods, '')">(Sort by):  Score</a>
+            </div>
+            <div class="right">
+                <a class="simple-banner-switch" v-bind:class=" { 'active': mods === 'vn' }"
+                @click="LoadLeaderboard(sort, mode, 'vn')">Vanilla</a>
+                <a class="simple-banner-switch" v-bind:class=" { 'active': mods === 'rx', 'disabled': mode === 'mania' }"
+                @click="LoadLeaderboard(sort, mode, 'rx')">Relax (MOD)</a>
+                <a class="simple-banner-switch" v-bind:class=" { 'active': mods === 'ap', 'disabled': mode === 'taiko' || mode === 'catch' || mode === 'mania'  }"
+                @click="LoadLeaderboard(sort, mode, 'ap')">Autopilot (MOD)</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-block">
+        <div class="leaderboard-main-bg table-responsive">
+            <div v-if="boards.length != undefined && boards.length != 0">
+                <table class="leaderboard-table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="t-heading"> </th>
+                            <th class="t-heading t-heading--main"></th>
+                            <th v-if="sort == 'pp' || sort == 'rscore'" class="t-heading table--selected">
+                                <% (sort=='pp' ? "PP" : "" ) %>
+                                    <% (sort=='rscore' ? "Score" : "" ) %>
+                            </th>
+                            <th class="t-heading"> Accuracy </th>
+                            <th class="t-heading"> Playcount </th>
+                            <th class="t-heading"> Max Combo </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(user, index) in boards" class="leaderboard-column">
+                            <td class="column-player-rank fa-solid">#<% index + 1 %>
+                            </td>
+                            <td class="column-player-name text-left">
+                                <a :title="flags[user.country.toUpperCase()]"
+                                    :style="'background-image: url(/static/images/flags/' + user.country.toUpperCase() + '.png)'"
+                                    class="player-flag">
+                                    <div class="flag-dropdown">
+                                         <% flags[user.country.toUpperCase()] %>
+                                    </div>
+                                </a>
+                                <a :href="'/u/'+user.player_id+'?mode='+mode+'&mods='+mods">
+                                    <% user.name %>
+                                </a>
+                            </td>
+                            <td v-if="sort == 'pp' || sort == 'rscore'">
+                                <% (sort=='pp' ? user.pp+'pp' : "" ) %>
+                                    <% (sort=='rscore' ? scoreFormat(user.rscore) : "" ) %>
+                            </td>
+                            <td>
+                                <% user.acc.toFixed(2) %>%
+                            </td>
+                            <td>
+                                <% addCommas(user.plays) %>
+                            </td>
+                            <td>
+                                <% addCommas(user.max_combo) %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div v-else>
+                <div class="text-center">
+                    ...where everyone goes???
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/asserts/vue-flags.js"></script>
+<script src="/static/js/pages/leaderboard.js"></script>
+{% endblock %}
