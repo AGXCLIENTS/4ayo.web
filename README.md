@@ -4,7 +4,6 @@ Frontend of [4ayo(.ovh)](https://4ayo.ovh) Osu! Private Server :D
 ## Credits:
 - [bancho.py](https://github.com/osuAkatsuki/bancho.py)
 - [guweb](https://github.com/varkaria/guweb)
-- [avatar-server](https://github.com/5l1v3r1/avatar-server)
   
 ## Special thanks for:
 - Me, [4aya](https://github.com/AGXCLIENTS)
