@@ -32,6 +32,17 @@ a:hover {
   background-color: hsl(var(--main), 15%, 25%);
 }
 
+.player-avatar {
+  display: inline-block;
+  background-size: 100%;
+  margin-right: 10px;
+  width: 30px;
+  height: 27px;
+  margin-bottom: -10px;
+  transition: 0.2s filter ease-out, 0.2s box-shadow ease-out;
+  border-radius: 5px;
+}
+
 .leaderboard-main-bg {
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
