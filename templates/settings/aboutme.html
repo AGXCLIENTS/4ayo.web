@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Editing About Me {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/pages/settings/style.css">
+
+<div class="main-block">
+  {% include "settings/sidebar.html" %}
+  <div class="block-content right" id="settings-content">
+    <div id="general" class="single-right-block">
+      <div class="right-block-header">
+          About Me
+      </div>
+      <form style=" margin-left: 20px; margin-right: 20px;" action="/settings/aboutme" method="post" class="right-block-content">
+        <textarea name="userpage_content" class="input" style="max-width: 800px; min-height: 300px;">{{ userpage_content }}</textarea>
+        <button style="margin-top: 10px" class='button is-primary' type='submit'><span>Save</span><span class='icon is-small'><i class='fas fa-check'></i></span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
