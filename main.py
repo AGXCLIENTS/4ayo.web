@@ -47,6 +47,10 @@ def appVersion() -> str:
     return repr(version)
 
 @app.template_global()
+def render_markdown(md: str) -> str:
+    return markdown2.markdown(md)
+
+@app.template_global()
 def appName() -> str:
     return glob.config.app_name
 

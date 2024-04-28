@@ -171,6 +171,38 @@ async def settings_avatar_post():
     pilavatar.save(os.path.join(AVATARS_PATH, f'{session["user_data"]["id"]}{file_extension.lower()}'))
     return await flash('success', 'Your avatar has been successfully changed!', 'settings/avatar')
 
+@frontend.route('/settings/aboutme')
+@login_required
+async def settings_aboutme():
+    user = await glob.db.fetch(
+        'SELECT userpage_content FROM users WHERE id = %s',
+        [session['user_data']['id']]
+    )
+
+    return await render_template('settings/aboutme.html', userpage_content=user['userpage_content'])
+
+@frontend.route('/settings/aboutme', methods=['POST'])
+@login_required
+async def settings_aboutme_post():
+    form = await request.form
+    userpage_content = form.get('userpage_content', type=str)
+    old_content = (await glob.db.fetch('SELECT userpage_content FROM users WHERE id = %s', [session['user_data']['id']]))['userpage_content']
+
+    if '<iframe' in userpage_content or '<script' in userpage_content:
+        return await render_template('settings/aboutme.html', flash='Not allowed method', status='error', userpage_content=old_content)
+    if (len(userpage_content) > 2048):
+        return await render_template('settings/aboutme.html', flash='Too long text', status='error', userpage_content=old_content)
+    
+    await glob.db.execute(
+        'UPDATE users '
+        'SET userpage_content = %s '
+        'WHERE id = %s',
+        [userpage_content, session['user_data']['id']]
+    )
+    session['user_data']['userpage_content'] = userpage_content
+
+    return await render_template('settings/aboutme.html', userpage_content=userpage_content)
+
 @frontend.route('/settings/custom')
 @login_required
 async def settings_custom():
