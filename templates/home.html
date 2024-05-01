@@ -5,6 +5,11 @@
 
 <head>
 
+    <!-- FOR STATISTICS -->
+    <script async data-id="101451937" src="/88491b849a47096bb.js"></script>
+    <noscript><p><img width="1" height="1" src="/ca5377a93d67df42c" /></p></noscript>
+    <!-- FOR STATISTICS -->
+
     <div id="cursor-custom"></div>
 
     <!-- SKRYPT DEFINIUJACY KURSOR -->
@@ -58,7 +63,9 @@
         <a  target="_blank" href="https://ko-fi.com/4ayshiee"><img src="https://cdn-icons-png.freepik.com/512/466/466223.png" alt=""></a>
         <a  target="_blank" href="/discord"><img src="https://cdn.icon-icons.com/icons2/2428/PNG/512/discord_black_logo_icon_147145.png" alt=""></a>
         <a  target="_blank" href="https://osu-server-list.com/server/4ayo"><img src="https://cdn2.iconfinder.com/data/icons/vote-reward-badges1/24/Vote-Stamp-512.png" alt=""></a>
+        <a  target="_blank" href="https://topg.org/osu-private-servers/server-663321"><img src="https://cdn2.iconfinder.com/data/icons/vote-reward-badges1/24/Vote-Stamp-512.png" alt=""></a>
     </div>
+
     <div class="bg">
         <video autoplay muted loop class="vidbg">
             <source src="/static/images/videobg.mp4" type="video/mp4">
@@ -81,9 +88,9 @@
     
         <div class="nav">
             <a href="/home"><h2>Home</h2></a>
-            <a href="https://mayaslab.eu"><h2>About Me</h2></a>
             <a href="/leaderboard"><h2>Leaderboard</h2></a>
             <a href="https://catboy.best"><h2>Beatmaps</h2></a>
+            <a href="https://discord.com/channels/1203309136830402570/1203625899648352277/1203778895715897416"><h2>Rules</h2></a>
             {% if not session.authenticated %}
             <a href="/register">
                 <button onclick="locaiton.href=''">Sign up</button>
@@ -105,6 +112,27 @@
             <h2>Hosted as a part of my homelab :3</h2>
         </div>
     </div>
+
+    <!-- COOKIE WARNING AND POLICY -->
+    <div class="cookie-banner js-cookie-banner">
+        <span style='color: black;'>This website uses 🍪 mainly for statistical purposes. By using this website, you agree to their usage. You can read more about it from Clicky(.com) </span><a href='https://clicky.com/terms/privacy' style='color: purple;'>Privacy Policy</a>
+        <button class="js-cookie-dismiss">Gotcha!</button>
+        <!-- COOKIE WARNING AND POLICY JS -->
+        <script>
+            // CLOSE BUTTON ELEMENT
+            function dismiss() {
+                document.querySelector('.js-cookie-banner').remove();
+            }
+    
+            // CLOSE BUTTON DEFINE
+            const buttonElement = document.querySelector('.js-cookie-dismiss');
+            if (buttonElement) {
+                buttonElement.addEventListener('click', dismiss);
+            }
+        </script>
+        <!-- COOKIE WARNING AND POLICY JS -->
+     </div>
+    <!-- COOKIE WARNING AND POLICY -->
     
     <div id="tryby" class="section">
         <div class="title">
@@ -117,32 +145,49 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/2048px-Osu%21_Logo_2016.svg.png" alt="">
                     <h1>What we offer?
                 </div>
-                <h2>(Cheating allowed)
+                <h2>
+                <br>(Cheating allowed)
                 <br>
                 <br>You can use cheats (e.g. freedom) on our server. We only ban for spamming or insulting others.
                 <br>WARNING! (Current limit: 10k PP per score.)
                 <br>
                 <br>(Free osu!direct) 
                 <br>
-                <br>Free direct using catboy.api and catboy.best. Thats it.
+                <br>Free direct using catboy(.api) and catboy(.best). Thats it.
                 <br>
                 <br>(Ranked mapps) 
                 <br>
                 <br>Do you want your map to be ranked? Write to one of our administrators!
                 <br>
+                </h2>
+
+                <!-- SUPPORTIVE ADS ;D -->
+                <!-- <script type="text/javascript">
+                        atOptions = {
+                        'key' : '9438e9f6472428f32b31baa5c319cce7',
+                        'format' : 'iframe',
+                        'height' : 60,
+                        'width' : 468,
+                        'params' : {}
+                                    };
+                </script>
+
+                <script type="text/javascript" src="//www.topcreativeformat.com/9438e9f6472428f32b31baa5c319cce7/invoke.js"></script> -->
+                <!-- SUPPORTIVE ADS ;D -->
+
                 <br>
                 <br>
                 </h2>
-            </div> 
 
+            </div> 
+            
         </div>
     </div>
     
     <div class="creator">
-        <h2><b>ⓒ</b> 2024 <b>4ayo(.ovh) </b> — 4ayo(.ovh) v1.3.0 </h2>
-        <h2>Frontend: <a href="https://github.com/AGXCLIENTS/4ayo.web"><b>Github</b></a></h2>  
-        <h2>Backend: <a href="https://github.com/AGXCLIENTS/4ayo.osu"><b>Github</b></a></h2>  
-        <h2>Server time: (CET) <span id="poland-time"></span> </h2>
+        <h2><b>ⓒ</b> 2024 <b>4ayo(.ovh) v1.3.0</b>- 4ayo(.ovh)s</h2>
+        <h2>WE ARE OPEN SOURCE ON <a href="https://github.com/AGXCLIENTS"><b>GITHUB! *CLICK*</b></a></h2>  
+        <h2>SERVER TIME: (CET) <span id="poland-time"></span> </h2>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

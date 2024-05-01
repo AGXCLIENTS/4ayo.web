@@ -16,7 +16,8 @@ a:hover {
 }
 
 .leaderboard-banner {
-  background: url("https://wallpaperaccess.com/full/527686.jpg");
+  background: linear-gradient(hsla(var(--main), 15%, 15%, 65%), hsla(var(--main), 25%, 25%, 65%)), 
+  url(https://mrwallpaper.com/images/hd/pink-anime-aesthetic-sakura-trees-ughxpdpeysn7x31y.jpg);
   background-size: stretch;
   height: 194px;
   border-radius: 0;
@@ -300,4 +301,29 @@ table th {
 .user-flag:hover>.flag-dropdown, .player-flag:hover>.flag-dropdown {
   visibility: visible;
   opacity: 1;
+}
+
+.pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pager-btn {
+  margin: 12px 6px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: hsl(var(--main), 65%, 50%);
+  width: 32px;
+  height: 32px;
+  color: white;
+  cursor: pointer;
+}
+
+.pager-btn.btn-disabled {
+  cursor: unset;
+  background: hsl(var(--main), 65%, 70%);
 }

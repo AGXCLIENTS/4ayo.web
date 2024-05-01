@@ -11,6 +11,7 @@
     var mods = "{{ mods }}";
     var sort = "{{ sort }}";
     var domain = "{{ domain() }}";
+    var page = {{ page }};
 </script>
 
 <link rel="stylesheet" href="/static/css/pages/leaderboard.css">
@@ -111,6 +112,22 @@
                 <div class="text-center">
                     ...where everyone goes???
                 </div>
+            </div>
+            <div class="pager">
+                <span class="pager-btn" v-bind:class="(page === 0) ? 'btn-disabled' : ''"
+                    @click="if (page > 0) LoadLeaderboard(sort, mode, mods, -1)">
+                    <span>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </span>
+                </span>
+                Page <% page + 1 %>
+                <span class="pager-btn"
+                    v-bind:class="(page === (page + 1) || boards.length < 50) ? 'btn-disabled' : '3'"
+                    @click="if (boards.length == 50) LoadLeaderboard(sort, mode, mods, 1)">
+                    <span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+                </span>
             </div>
         </div>
     </div>

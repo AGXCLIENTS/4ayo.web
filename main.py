@@ -7,6 +7,8 @@ import os
 
 import aiohttp
 import orjson
+import html
+import markdown2
 from quart import Quart
 from quart import render_template
 
@@ -45,6 +47,22 @@ async def shutdown() -> None:
 @app.template_global()
 def appVersion() -> str:
     return repr(version)
+
+@app.template_global()
+def render_markdown(md: str) -> str:
+    return markdown2.markdown(
+        html.unescape(md),
+        extras={
+            "tables": None,
+            "break-on-newline": None,
+            "fenced-code-blocks": None,
+            "spoiler": None,
+            "strike": None,
+            "html-classes": {
+                "table": "table"
+            }
+        },
+    )
 
 @app.template_global()
 def appName() -> str:

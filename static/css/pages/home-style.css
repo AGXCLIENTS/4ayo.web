@@ -392,3 +392,8 @@ b{
 		0 0 7px #fff, 0 0 8px #fff, 0 0 10px #fff, 0 0 15px #fff;
 
 }
+
+.cookie-banner {
+    background-color: pink;
+    padding: 20px;
+  }

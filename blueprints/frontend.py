@@ -129,6 +129,7 @@ async def settings_profile_post():
     session.pop('user_data', None)
     return await flash('success', 'Your username/email have been changed! Please login again.', 'login')
 
+@frontend.route('/home/account/edit') # XXX: fucky hack to fix client redirects
 @frontend.route('/settings/avatar')
 @login_required
 async def settings_avatar():
@@ -170,6 +171,39 @@ async def settings_avatar_post():
     pilavatar = utils.crop_image(pilavatar)
     pilavatar.save(os.path.join(AVATARS_PATH, f'{session["user_data"]["id"]}{file_extension.lower()}'))
     return await flash('success', 'Your avatar has been successfully changed!', 'settings/avatar')
+
+@frontend.route('/settings/aboutme')
+@login_required
+async def settings_aboutme():
+    user = await glob.db.fetch(
+        'SELECT userpage_content FROM users WHERE id = %s',
+        [session['user_data']['id']]
+    )
+
+    return await render_template('settings/aboutme.html', userpage_content=user['userpage_content'])
+
+@frontend.route('/settings/aboutme', methods=['POST'])
+@login_required
+async def settings_aboutme_post():
+    form = await request.form
+    userpage_content = form.get('userpage_content', type=str)
+    old_content = (await glob.db.fetch('SELECT userpage_content FROM users WHERE id = %s', [session['user_data']['id']]))['userpage_content']
+
+    if '<iframe' in userpage_content or '<script' in userpage_content:
+        return await render_template('settings/aboutme.html', flash='Not allowed method', status='error', userpage_content=old_content)
+    if (len(userpage_content) > 2048):
+        return await render_template('settings/aboutme.html', flash='Too long text', status='error', userpage_content=old_content)
+
+    await glob.db.execute(
+        'UPDATE users '
+        'SET userpage_content = %s '
+        'WHERE id = %s',
+        [userpage_content, session['user_data']['id']]
+    )
+    session['user_data']['userpage_content'] = userpage_content
+
+    return await render_template('settings/aboutme.html', userpage_content=userpage_content)
+
 
 @frontend.route('/settings/custom')
 @login_required
@@ -309,7 +343,7 @@ async def profile_select(id):
     mode = request.args.get('mode', 'std', type=str) # 1. key 2. default value
     mods = request.args.get('mods', 'vn', type=str)
     user_data = await glob.db.fetch(
-        'SELECT name, safe_name, id, priv, country '
+        'SELECT name, safe_name, id, priv, country, userpage_content '
         'FROM users '
         'WHERE safe_name = %s OR id = %s LIMIT 1',
         [utils.get_safe_name(id), id]
@@ -338,8 +372,8 @@ async def profile_select(id):
 @frontend.route('/lb')
 @frontend.route('/leaderboard/<mode>/<sort>/<mods>')
 @frontend.route('/lb/<mode>/<sort>/<mods>')
-async def leaderboard(mode='std', sort='pp', mods='vn'):
-    return await render_template('leaderboard.html', mode=mode, sort=sort, mods=mods)
+async def leaderboard(mode='std', sort='pp', mods='vn', page=1):
+    return await render_template('leaderboard.html', mode=mode, sort=sort, mods=mods, page=page)
 
 @frontend.route('/login')
 async def login():
