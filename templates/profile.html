@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block title %} Profile {% endblock %}
 
+    <!-- FOR STATISTICS -->
+    <script
+	    src="https://app.prismeanalytics.com/static/m.js"
+	    data-prisme-verification-id="2d554ed8-73c6-4cc3-ba2f-7cd0e38dcd79"
+	    defer>
+   </script>
+    <!-- FOR STATISTICS -->
+     
 {% macro userpage(user) %} 
     {% if user['userpage_content'] != None
     and user['userpage_content'] != "" %}

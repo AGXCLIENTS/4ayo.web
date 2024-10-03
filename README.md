@@ -11,6 +11,7 @@ Frontend of [4ayo(.ovh)](https://4ayo.ovh) Osu! Private Server :D
 - [Mini](https://github.com/minisbett), for some code
 - Destiny, for search system
 - [Marc](https://github.com/marcandreher), for bpy-tools and help with sql
+- [how-to-do-frontend](https://github.com/how-to-do-frontend), for help with leaderboard
 - [iFlxy](https://github.com/iFlxy), for being a great friend :)
 
 # HOW TO CONNECT???:
